@@ -12,5 +12,16 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+  rc-auth-service:
+    build:
+      context: .
+      dockerfile: ./apps/rc-auth-service/Dockerfile
+      target: development
+    command: yarn start:dev rc-auth-service
+    ports:
+      - '3001:3001'
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
   mongo:
     image: mongo
