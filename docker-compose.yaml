@@ -1,23 +1,12 @@
-version: '3.8'
-
 services:
-  reservations:
+  auth-srv:
     build:
       context: .
-      dockerfile: ./apps/reservations/Dockerfile
+      dockerfile: ./apps/auth-srv/Dockerfile
       target: development
-    command: yarn start:dev reservations
-    ports:
-      - '3000:3000'
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-  rc-auth-service:
-    build:
-      context: .
-      dockerfile: ./apps/rc-auth-service/Dockerfile
-      target: development
-    command: yarn start:dev rc-auth-service
+    command: yarn start:dev auth-srv
+    env_file:
+      - ./apps/auth-srv/.env
     ports:
       - '3001:3001'
     volumes:
@@ -25,3 +14,9 @@ services:
       - /usr/src/app/node_modules
   mongo:
     image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+volumes:
+  mongo-data:

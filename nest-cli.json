@@ -1,11 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/reservations/src",
+  "sourceRoot": "apps/auth-srv/src",
   "compilerOptions": {
     "deleteOutDir": true,
     "webpack": true,
-    "tsConfigPath": "apps/reservations/tsconfig.app.json"
+    "tsConfigPath": "apps/auth-srv/tsconfig.app.json"
   },
   "projects": {
     "common": {
@@ -17,25 +17,16 @@
         "tsConfigPath": "libs/common/tsconfig.lib.json"
       }
     },
-    "rc-auth-service": {
+    "auth-srv": {
       "type": "application",
-      "root": "apps/rc-auth-service",
+      "root": "apps/auth-srv",
       "entryFile": "main",
-      "sourceRoot": "apps/rc-auth-service/src",
+      "sourceRoot": "apps/auth-srv/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/rc-auth-service/tsconfig.app.json"
-      }
-    },
-    "reservations": {
-      "type": "application",
-      "root": "apps/reservations",
-      "entryFile": "main",
-      "sourceRoot": "apps/reservations/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/reservations/tsconfig.app.json"
+        "tsConfigPath": "apps/auth-srv/tsconfig.app.json"
       }
     }
   },
   "monorepo": true,
-  "root": "apps/reservations"
+  "root": "apps/auth-srv"
 }
